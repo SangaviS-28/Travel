@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travelora - Travel & Tourism</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: white;
+            color: #333;
+        }
+
+        /* Navigation */
+        header {
+            background-color: white;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px #ccc;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #168aad;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            margin-left: 18px;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #168aad;
+        }
+
+        .book-btn {
+            background-color: #168aad;
+            color: white;
+            padding: 9px 14px;
+            border-radius: 5px;
+        }
+
+        /* Home */
+        #home {
+            height: 500px;
+            background-image:
+                linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                url("https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1400&q=80");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            align-items: center;
+            padding-left: 8%;
+            color: white;
+        }
+
+        .home-content {
+            max-width: 500px;
+        }
+
+        .home-content h1 {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .home-content p {
+            font-size: 17px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .explore-btn {
+            background-color: #168aad;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+        }
+
+        /* Common Section */
+        section {
+            padding: 60px 7%;
+        }
+
+        .heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .heading h2 {
+            color: #168aad;
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .heading p {
+            color: #666;
+        }
+
+        /* Destinations */
+        .destination-box {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .destination {
+            width: 25%;
+            border: 1px solid #ddd;
+            border-radius: 7px;
+            overflow: hidden;
+            background-color: white;
+        }
+
+        .destination img {
+            width: 100%;
+            height: 170px;
+            object-fit: cover;
+        }
+
+        .destination-text {
+            padding: 15px;
+        }
+
+        .destination-text h3 {
+            color: #168aad;
+            margin-bottom: 8px;
+        }
+
+        .destination-text p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* About */
+        #about {
+            background-color: #f2f9fa;
+        }
+
+        .about-box {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .about-box img {
+            width: 45%;
+            border-radius: 7px;
+        }
+
+        .about-text {
+            width: 55%;
+        }
+
+        .about-text h2 {
+            color: #168aad;
+            margin-bottom: 15px;
+        }
+
+        .about-text p {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 10px;
+        }
+
+        /* Services */
+        .service-box {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .service {
+            width: 25%;
+            padding: 25px 15px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 7px;
+        }
+
+        .service-icon {
+            font-size: 35px;
+            margin-bottom: 12px;
+        }
+
+        .service h3 {
+            color: #168aad;
+            margin-bottom: 10px;
+        }
+
+        .service p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Why Choose Us */
+        #why {
+            background-color: #f2f9fa;
+        }
+
+        .why-box {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .why-item {
+            width: 25%;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .why-item h3 {
+            color: #168aad;
+            margin: 10px 0;
+        }
+
+        .why-item p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .why-icon {
+            font-size: 35px;
+        }
+
+        /* Booking */
+        .booking-form {
+            width: 600px;
+            max-width: 100%;
+            margin: auto;
+            padding: 25px;
+            border: 1px solid #ddd;
+            border-radius: 7px;
+        }
+
+        .booking-form input,
+        .booking-form select,
+        .booking-form textarea {
+            width: 100%;
+            padding: 11px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .booking-form textarea {
+            height: 90px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 11px;
+            background-color: #168aad;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Contact */
+        #contact {
+            background-color: #f2f9fa;
+        }
+
+        .contact-box {
+            display: flex;
+            gap: 40px;
+        }
+
+        .contact-info {
+            width: 50%;
+        }
+
+        .contact-info h2 {
+            color: #168aad;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin: 15px 0;
+            color: #555;
+        }
+
+        .contact-form {
+            width: 50%;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 11px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .contact-form textarea {
+            height: 100px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #164e63;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        footer p {
+            margin-top: 8px;
+            color: #ddd;
+        }
+
+        /* Mobile */
+        @media (max-width: 800px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 5px;
+                display: inline-block;
+            }
+
+            .destination-box,
+            .service-box,
+            .why-box,
+            .about-box,
+            .contact-box {
+                flex-direction: column;
+            }
+
+            .destination,
+            .service,
+            .why-item,
+            .about-box img,
+            .about-text,
+            .contact-info,
+            .contact-form {
+                width: 100%;
+            }
+
+            #home {
+                padding: 30px;
+            }
+
+            .home-content h1 {
+                font-size: 38px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header>
+
+        <div class="logo">
+            Travelora ✈️
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#destinations">Destinations</a>
+            <a href="#about">About Us</a>
+            <a href="#services">Services</a>
+            <a href="#why">Why Us</a>
+            <a href="#booking">Book Now</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+    </header>
+
+
+    <!-- Home -->
+    <section id="home">
+
+        <div class="home-content">
+
+            <h1>Explore The World</h1>
+
+            <p>
+                Discover beautiful places and enjoy
+                wonderful travel experiences with Travelora.
+            </p>
+
+            <a href="#destinations" class="explore-btn">
+                Explore Now
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- Destinations -->
+    <section id="destinations">
+
+        <div class="heading">
+            <h2>Popular Destinations</h2>
+            <p>Choose your favourite place to visit</p>
+        </div>
+
+        <div class="destination-box">
+
+            <div class="destination">
+
+                <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=600&q=80">
+
+                <div class="destination-text">
+                    <h3>Paris</h3>
+                    <p>
+                        Visit the Eiffel Tower and enjoy
+                        the beautiful city of Paris.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="destination">
+
+                <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=600&q=80">
+
+                <div class="destination-text">
+                    <h3>Bali</h3>
+                    <p>
+                        Enjoy beautiful beaches and
+                        natural places in Bali.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="destination">
+
+                <img src="https://t4.ftcdn.net/jpg/02/81/14/83/360_F_281148366_Uw03PoKAGUZIAWecL5Op35YPMa7os2uC.jpg">
+
+                <div class="destination-text">
+                    <h3>Switzerland</h3>
+                    <p>
+                        Explore mountains, lakes and
+                        beautiful scenery.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="destination">
+
+                <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=600&q=80">
+
+                <div class="destination-text">
+                    <h3>Greece</h3>
+                    <p>
+                        Enjoy beaches, islands and
+                        beautiful sunsets.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- About Us -->
+    <section id="about">
+
+        <div class="about-box">
+
+            <img src="https://images.unsplash.com/photo-1488085061387-422e29b40080?auto=format&fit=crop&w=800&q=80">
+
+            <div class="about-text">
+
+                <h2>About Travelora</h2>
+
+                <p>
+                    Travelora is a simple travel and tourism
+                    website created for people who love travelling.
+                </p>
+
+                <p>
+                    We help travellers discover beautiful
+                    destinations and plan their trips easily.
+                </p>
+
+                <p>
+                    Our goal is to make every journey
+                    enjoyable and memorable.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Services -->
+    <section id="services">
+
+        <div class="heading">
+            <h2>Our Services</h2>
+            <p>Services that make your trip easy</p>
+        </div>
+
+        <div class="service-box">
+
+            <div class="service">
+                <div class="service-icon">✈️</div>
+                <h3>Flight Booking</h3>
+                <p>
+                    Book flights easily for your journey.
+                </p>
+            </div>
+
+            <div class="service">
+                <div class="service-icon">🏨</div>
+                <h3>Hotel Booking</h3>
+                <p>
+                    Find comfortable hotels for your stay.
+                </p>
+            </div>
+
+            <div class="service">
+                <div class="service-icon">🗺️</div>
+                <h3>Tour Packages</h3>
+                <p>
+                    Choose suitable packages for your trip.
+                </p>
+            </div>
+
+            <div class="service">
+                <div class="service-icon">🚗</div>
+                <h3>Travel Guide</h3>
+                <p>
+                    Get useful information about destinations.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Why Choose Us -->
+    <section id="why">
+
+        <div class="heading">
+            <h2>Why Choose Us?</h2>
+            <p>Some reasons to choose Travelora</p>
+        </div>
+
+        <div class="why-box">
+
+            <div class="why-item">
+                <div class="why-icon">🌍</div>
+                <h3>Best Places</h3>
+                <p>
+                    We offer information about beautiful
+                    destinations.
+                </p>
+            </div>
+
+            <div class="why-item">
+                <div class="why-icon">💰</div>
+                <h3>Affordable</h3>
+                <p>
+                    Simple and budget-friendly travel plans.
+                </p>
+            </div>
+
+            <div class="why-item">
+                <div class="why-icon">🛡️</div>
+                <h3>Safe Travel</h3>
+                <p>
+                    We care about your safety and comfort.
+                </p>
+            </div>
+
+            <div class="why-item">
+                <div class="why-icon">😊</div>
+                <h3>Good Experience</h3>
+                <p>
+                    Enjoy a happy and memorable journey.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Book Now -->
+    <section id="booking">
+
+        <div class="heading">
+            <h2>Book Your Trip</h2>
+            <p>Fill the form to plan your journey</p>
+        </div>
+
+        <form class="booking-form" onsubmit="bookTrip(event)">
+
+            <input type="text"
+                   id="name"
+                   placeholder="Enter Your Name"
+                   required>
+
+            <input type="email"
+                   placeholder="Enter Your Email"
+                   required>
+
+            <select id="place" required>
+
+                <option value="">Select Destination</option>
+                <option>Paris</option>
+                <option>Bali</option>
+                <option>Switzerland</option>
+                <option>Greece</option>
+
+            </select>
+
+            <input type="date" required>
+
+            <input type="number"
+                   placeholder="Number of Travellers"
+                   min="1"
+                   required>
+
+            <textarea placeholder="Message"></textarea>
+
+            <button class="submit-btn">
+                Book Now
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <!-- Contact -->
+    <section id="contact">
+
+        <div class="heading">
+            <h2>Contact Us</h2>
+            <p>Get in touch with us</p>
+        </div>
+
+        <div class="contact-box">
+
+            <div class="contact-info">
+
+                <h2>Travelora</h2>
+
+                <p>📍 Chennai, Tamil Nadu, India</p>
+
+                <p>📞 +91 98765 43210</p>
+
+                <p>📧 travelora@gmail.com</p>
+
+                <p>
+                    Feel free to contact us for more
+                    information about our travel services.
+                </p>
+
+            </div>
+
+
+            <form class="contact-form"
+                  onsubmit="sendMessage(event)">
+
+                <input type="text"
+                       placeholder="Your Name"
+                       required>
+
+                <input type="email"
+                       placeholder="Your Email"
+                       required>
+
+                <textarea placeholder="Your Message"
+                          required></textarea>
+
+                <button class="submit-btn">
+                    Send Message
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <h2>Travelora ✈️</h2>
+
+        <p>
+            Explore • Travel • Discover
+        </p>
+
+        <p>
+            © 2026 Travelora. All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script>
+
+        function bookTrip(event) {
+
+            event.preventDefault();
+
+            let name = document.getElementById("name").value;
+            let place = document.getElementById("place").value;
+
+            alert(
+                "Thank you " + name +
+                "! Your trip to " + place +
+                " has been booked successfully."
+            );
+        }
+
+
+        function sendMessage(event) {
+
+            event.preventDefault();
+
+            alert("Your message has been sent successfully!");
+
+        }
+
+    </script>
+
+</body>
+</html>
